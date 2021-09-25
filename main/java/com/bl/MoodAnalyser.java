@@ -1,7 +1,12 @@
 package com.bl;
 
 public class MoodAnalyser {
-	public static void main(String[] args) {
-        System.out.println("welome message");
+	public String analyser(String message) {
+		if (message.contains("sad")) {
+			System.out.println("sad");
+			return "SAD";
+		}
+			System.out.println("happy");
+			return "HAPPY";
 	}
 }
