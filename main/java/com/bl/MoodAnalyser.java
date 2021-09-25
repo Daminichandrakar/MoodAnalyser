@@ -7,18 +7,19 @@ public class MoodAnalyser {
 		this.message = message;
 	}
 
-
-	public String analyser() {
-			try {
-
-				if (message.contains("sad")) {
-					System.out.println("sad");
-					return "SAD";
-				} 
-				return "HAPPY";
-			} catch (NullPointerException e) {
-
-				return "HAPPY";
-			}
-	}
+    public String analyser() {
+        try {
+            if (message.length() == 0) {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY,
+                        "Enter Proper Message. EMPTY Not Allowed");
+            }
+            if (message.toLowerCase().contains("sad")) {
+                return "SAD";
+            }
+            return "HAPPY";
+        } catch (NullPointerException exception) {
+            throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,
+                    "Enter Proper Message. NULL Not Allowed");
+        }
+    }
 }
